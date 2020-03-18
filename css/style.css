@@ -1,0 +1,29 @@
+html {
+  min-height: 100%
+}
+
+body {
+  background: lightgray;
+}
+
+.container {
+  height: 100%;
+  width: auto;
+  /* background: lightgray; */
+}
+
+#description {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#newWord {
+  margin: 10px;
+}
+
+#candidate {
+  background: blue;
+  color: white;
+  border: solid 2px white;
+  width: 30%;
+}
