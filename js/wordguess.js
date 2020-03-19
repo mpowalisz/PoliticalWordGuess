@@ -1,11 +1,5 @@
 // Word Bank
-const wordBank = [
-  "Joe",
-  "Donald",
-  "Bernie",
-  "Michael",
-  "Elizabeth"
-];
+const wordBank = ["Joe", "Donald", "Bernie", "Michael", "Elizabeth"];
 
 const candidates = {
   Elizabeth: "Elizabeth Warren",
@@ -33,7 +27,7 @@ let guesses;
 let lettersGuessed = [];
 
 // Function to select a word from the wordBank array
-let selectWord = () => {
+const selectWord = () => {
   // Reset variables
   word = undefined;
   wordArray = [];
@@ -42,12 +36,12 @@ let selectWord = () => {
   guesses = 15;
   lettersGuessed = [];
 
-  document.getElementById("candidate").style = "display:block"
-  document.getElementById("lettersGuessed").style = "display:block"
-  document.getElementById("guesses").style = "display:block"
+  document.getElementById("candidate").style = "display:block";
+  document.getElementById("lettersGuessed").style = "display:block";
+  document.getElementById("guesses").style = "display:block";
 
   // Set word variable
-  word = wordBank[Math.floor(Math.random() * wordBank.length)]
+  word = wordBank[Math.floor(Math.random() * wordBank.length)];
   // console.log(word);
 
   // Split word into an array of letters
@@ -57,45 +51,43 @@ let selectWord = () => {
   // console.log(typeof wordArray);
 
   // Replace word_ with underscores for display on page
-  for (i = 0; i < wordArray.length; i++) {
+  for (let i = 0; i < wordArray.length; i++) {
     word_.push("_");
   }
   // console.log("word_ is " + word_);
   document.getElementById("newWord").innerHTML = word_;
   document.getElementById("lettersGuessed").innerHTML = "Letters Guessed: ";
   document.getElementById("guesses").innerHTML = "Guesses Left: " + guesses;
-  console.log("_______________End selectWord()___________")
+  console.log("_______________End selectWord()___________");
 };
 
 // Track user key press
-document.onkeyup = (event) => {
+document.onkeyup = event => {
   letter = event.key;
   // console.log("The letter that was pressed is " + letter);
   if (guesses !== 0) {
     checkLetter(letter);
   } else {
-    alert("I'm sorry. \n You're out of chances.")
+    alert("I'm sorry. \n You're out of chances.");
   }
 };
 
 // Function to compare answer
 const compare = (letter, word_, wordArray) => {
-  console.log("compare was called")
+  console.log("compare was called");
   // console.log("wordArray: " + wordArray)
   // console.log("word_: " + word_)
   if (word_.toString() == wordArray.toString()) {
-
     // console.log("word_ is " + word_ + " & wordArray is " + wordArray);
     alert("You win. \n Your candidate was " + candidates[word]);
   } else {
     checkLetter(letter);
   }
-
-}
+};
 
 // Function to check the letter entered
-const checkLetter = (letter) => {
-  console.log("checkLetter was called")
+const checkLetter = letter => {
+  console.log("checkLetter was called");
   // console.log("wordArray: " + wordArray);
   // console.log("wordArray2: " + wordArray2);
   let find = wordArray2.lastIndexOf(letter);
@@ -108,7 +100,8 @@ const checkLetter = (letter) => {
   } else {
     lettersGuessed.push(letter);
     guesses--;
-    document.getElementById("lettersGuessed").innerHTML = "Letters Guessed: " + lettersGuessed;
+    document.getElementById("lettersGuessed").innerHTML =
+      "Letters Guessed: " + lettersGuessed;
     document.getElementById("guesses").innerHTML = "Guesses Left: " + guesses;
     console.log("________________End checkLetter()___________________");
   }
